@@ -9,28 +9,32 @@ package com.mycompany.task1;
  *
  * @author julia
  */
-public class Order {
+public class Order implements Comparable<Order>{
     
     private final Customer customer;
-    private String serialNum;
+    private final int serialNum;
 
-    public Order(Customer customer) {
+    public Order (Customer customer, int serialNum){
         this.customer = customer;
+        this.serialNum = serialNum;
     }
-
-    
     
     public Customer getCustomer() {
         return customer;
     }
 
-    public String getSerialNum() {
+    public int getSerialNum() {
         return serialNum;
     }
 
-    public void setSerialNum(String serialNum) {
-        this.serialNum = serialNum;
+    @Override
+    public int compareTo(Order o) {
+       if(serialNum > o.getSerialNum()){
+           return 1;
+       }else if(serialNum < o.getSerialNum()){
+           return -1;
+       } else {return 0;}
     }
-    
+  
     
 }

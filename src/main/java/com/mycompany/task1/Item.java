@@ -11,27 +11,31 @@ import java.util.Objects;
  *
  * @author julia
  */
-public class Item {
-    
+public class Item implements Comparable<Item> {
+
     private String itemName;
     private Category cat;
     private int itemId;
-    
-    //TODO constructors everywhere
-    
-    public String getItemName(){
-        return itemName;
-    }
-    
-    public void setItemName(String itemName){
+
+    public Item(String itemName, Category cat, int itemId) {
+        this.cat = cat;
+        this.itemId = itemId;
         this.itemName = itemName;
     }
-    
-    public Category getCategory(){
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public Category getCategory() {
         return cat;
     }
-    
-    public void setCategory(Category cat){
+
+    public void setCategory(Category cat) {
         this.cat = cat;
     }
 
@@ -65,6 +69,16 @@ public class Item {
         }
         return true;
     }
-    
-    
+
+    @Override
+    public int compareTo(Item o) {
+        if (itemId > o.getItemId()) {
+            return 1;
+        } else if (itemId < o.getItemId()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
 }

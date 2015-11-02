@@ -9,27 +9,22 @@ package com.mycompany.task1;
  *
  * @author julia
  */
-public class Customer {
+public class Customer implements Comparable {
+
+    private final String customName;
+    private final int customId;
     
-    private String customName;
-    private int customId;
+    public Customer(String customName, int customId){
+        this.customId = customId;
+        this.customName = customName;
+    }
 
     public String getCustomName() {
         return customName;
     }
-
-    public void setCustomName(String customName) {
-        this.customName = customName;
-    }
-
     public int getCustomId() {
         return customId;
     }
-
-    public void setCustomId(int customId) {
-        this.customId = customId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -51,6 +46,20 @@ public class Customer {
         }
         return true;
     }
-    
-    
+
+    @Override
+    public int compareTo(Object o) {
+        Customer c = (Customer) o;
+
+        if (c.customId < customId) {
+            return 1;
+        } else {
+            if (c.customId > customId) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
 }
