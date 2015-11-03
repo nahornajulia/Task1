@@ -27,24 +27,12 @@ public class Item implements Comparable<Item> {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
     public Category getCategory() {
         return cat;
     }
 
-    public void setCategory(Category cat) {
-        this.cat = cat;
-    }
-
     public int getItemId() {
         return itemId;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
     }
 
     @Override

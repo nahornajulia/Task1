@@ -17,11 +17,12 @@ import java.util.TreeSet;
 public class Main {
 
     public Main() {
-        this.categories = new TreeSet<Category>();
-        this.items = new TreeSet<Item>();
-        this.io = new ArrayList<ItemOrder>();
-        this.customers = new TreeSet<Customer>();
-        this.orders = new TreeSet<Order>();
+        this.categories = new TreeSet<>();
+        this.items = new TreeSet<>();
+        this.io = new ArrayList<>();
+        this.customers = new TreeSet<>();
+        this.orders = new TreeSet<>();
+        this.ic = new ArrayList<>();
     }
 
     Set<Category> categories;
@@ -29,6 +30,7 @@ public class Main {
     Set<Order> orders;
     Set<Customer> customers;
     ArrayList<ItemOrder> io;
+    ArrayList<ItemCustomer> ic;
 
     public void addCustomer(Customer cus) {
         customers.add(cus);
@@ -47,8 +49,13 @@ public class Main {
         io.add(itemOrder);
     }
 
+    public void addItemCustomer(int itemId, int customerId) {
+        ItemCustomer itemCustomer = new ItemCustomer(itemId, customerId);
+        ic.add(itemCustomer);
+    }
+
     public List<Item> getItemsByOrder(Order o) {
-        List<Item> result = new ArrayList<Item>();
+        List<Item> result = new ArrayList<>();
         for (ItemOrder myIo : io) {
             if (myIo.getOrderId() == o.getSerialNum()) {
                 for (Item i : items) {
@@ -58,17 +65,30 @@ public class Main {
                 }
             }
         }
-     return result;
+        return result;
+    }
+
+    public List<Item> getItemsByCustomer(Customer c) {
+        List<Item> resultByCustomers = new ArrayList<>();
+        for (ItemCustomer myIc : ic) {
+            if (myIc.getCustomId() == c.getCustomId()) {
+                for (Item i : items) {
+                    if (i.getItemId() == myIc.getItemId()) {
+                        resultByCustomers.add(i);
+                    }
+                }
+            }
+        }
+        return resultByCustomers;
     }
 
     public static void main(String[] args) {
         Main m = new Main();
 
-        Customer c1 = new Customer("Julia", 0);
-        Customer c2 = new Customer("Maks", 1);
+        Customer c1 = new Customer("Jennifer", 0);
+        Customer c2 = new Customer("John", 1);
 
         Order order1 = new Order(c1, 1000);
-        Order order2 = new Order(c1, 1001);
 
         Category category1 = new Category("Building materials", 0);
         Category category2 = new Category("Electricity", 1);
@@ -81,36 +101,32 @@ public class Main {
 
         m.addCustomer(c2);
         m.addOrder(order1);
- 
+
         m.addItemOrder(item1.getItemId(), order1.getSerialNum());
         m.addItemOrder(item2.getItemId(), order1.getSerialNum());
         m.addItemOrder(item3.getItemId(), order1.getSerialNum());
- 
+
         m.addItem(item1);
         m.addItem(item2);
         m.addItem(item3);
-        
-
-        m.addOrder(order2);
         m.addItem(item4);
-        m.addItemOrder(item4.getItemId(), order2.getSerialNum());
-        m.addItemOrder(item1.getItemId(), order2.getSerialNum());
-        m.addItemOrder(item2.getItemId(), order2.getSerialNum());
         
-        
-        
-        
-        System.out.println("Printing result of the current order: " + order1.getSerialNum());
+        m.addItemCustomer(item4.getItemId(), c1.getCustomId());
+        m.addItemCustomer(item1.getItemId(), c1.getCustomId());
+        m.addItemCustomer(item2.getItemId(), c1.getCustomId());
+
+        //The list of items by Order
+        System.out.println("Printing result of the order #1: " + order1.getSerialNum());
         List<Item> itemsByOrder = m.getItemsByOrder(order1);
-        for (Item printAll : itemsByOrder){
-            System.out.println(printAll.getItemName());
-        }
-        
-         System.out.println("Printing result of the current order: " + order2.getSerialNum());
-        List<Item> itemsByOrder2 = m.getItemsByOrder(order2);
-        for (Item printAll : itemsByOrder2){
+        for (Item printAll : itemsByOrder) {
             System.out.println(printAll.getItemName());
         }
 
+        //The List of items by Customers
+        System.out.println("The list of items of customer: " + c1.getCustomName());
+        List<Item> itemsByCustomer = m.getItemsByCustomer(c1);
+        for (Item print : itemsByCustomer) {
+            System.out.println(print.getItemName());
+        }
     }
 }
