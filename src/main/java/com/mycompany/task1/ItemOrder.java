@@ -10,20 +10,20 @@ package com.mycompany.task1;
  * @author julia
  */
 public class ItemOrder {
-    private int itemId;
-    private int orderId;
+    private final Item item;
+    private final Order order;
     
-    public ItemOrder(int itemId, int orderId){
-        this.itemId = itemId;
-        this.orderId = orderId;
+    public ItemOrder(Item item, Order order){
+        this.item = item;
+        this.order = order;
     }
     
-    public int getItemId(){
-        return itemId;
+    public Item getItem(){
+        return item;
     }
     
-    public int getOrderId(){
-        return orderId;
+    public Order getOrder(){
+        return order;
     }
     
     
