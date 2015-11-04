@@ -5,7 +5,10 @@
  */
 package com.mycompany.task1;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
@@ -16,6 +19,7 @@ public class Item implements Comparable<Item> {
     private String itemName;
     private Category cat;
     private int itemId;
+    private static Set<Item> items = new TreeSet<Item>();
 
     public Item(String itemName, Category cat, int itemId) {
         this.cat = cat;
@@ -47,6 +51,12 @@ public class Item implements Comparable<Item> {
         this.itemId = itemId;
     }
 
+    public static void addItem(Item item) {
+        items.add(item);
+    }
+public static Set<Item> getItems(){
+    return items;
+}
     @Override
     public int hashCode() {
         int hash = 5;

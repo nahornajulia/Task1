@@ -5,6 +5,9 @@
  */
 package com.mycompany.task1;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  *
  * @author julia
@@ -12,6 +15,7 @@ package com.mycompany.task1;
 public class Category {
     private String categoryName;
     private int id;
+    private static Set<Category> categories = new TreeSet<Category>();
     
     public Category(String categoryName, int id){
         this.categoryName = categoryName;
