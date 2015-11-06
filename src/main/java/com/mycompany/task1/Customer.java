@@ -5,6 +5,9 @@
  */
 package com.mycompany.task1;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  *
  * @author julia
@@ -13,18 +16,27 @@ public class Customer implements Comparable {
 
     private final String customName;
     private final int customId;
+    private static Set<Customer> customers = new TreeSet<Customer>();
+    
     
     public Customer(String customName, int customId){
         this.customId = customId;
         this.customName = customName;
     }
 
+    
+    
     public String getCustomName() {
         return customName;
     }
     public int getCustomId() {
         return customId;
     }
+    
+    public static void addCustomer(Customer cus) {
+        customers.add(cus);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
