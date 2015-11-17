@@ -12,19 +12,19 @@ import java.util.TreeSet;
  *
  * @author julia
  */
-public class Customer implements Comparable {
+public class Customer {
 
     private final String customName;
     private final int customId;
+    private static int counter; 
     private static Set<Customer> customers = new TreeSet<Customer>();
     
     
-    public Customer(String customName, int customId){
-        this.customId = customId;
+    public Customer(String customName){
+        this.customId = counter++;
         this.customName = customName;
     }
 
-    
     
     public String getCustomName() {
         return customName;
@@ -35,43 +35,6 @@ public class Customer implements Comparable {
     
     public static void addCustomer(Customer cus) {
         customers.add(cus);
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + this.customId;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Customer other = (Customer) obj;
-        if (this.customId != other.customId) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        Customer c = (Customer) o;
-
-        if (c.customId < customId) {
-            return 1;
-        } else {
-            if (c.customId > customId) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
     }
 
 }

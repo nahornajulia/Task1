@@ -15,11 +15,12 @@ import java.util.TreeSet;
 public class Category {
     private String categoryName;
     private int id;
+    private static int counter;
     private static Set<Category> categories = new TreeSet<Category>();
     
-    public Category(String categoryName, int id){
+    public Category(String categoryName){
         this.categoryName = categoryName;
-        this.id = id;
+        this.id = counter++;
     }
     
     public String getName(){
@@ -32,34 +33,6 @@ public class Category {
     
     public int getId(){
         return id;
-    }
-    
-    public void setId(int id){
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Category other = (Category) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
-    
-   
+    }   
     
 }

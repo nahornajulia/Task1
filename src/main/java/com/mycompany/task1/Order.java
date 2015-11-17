@@ -5,7 +5,6 @@
  */
 package com.mycompany.task1;
 
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -13,15 +12,16 @@ import java.util.TreeSet;
  *
  * @author julia
  */
-public class Order implements Comparable<Order>{
+public class Order {
     
     private final Customer customer;
     private final int serialNum;    
+    private static int counter;
     private static Set<Order> orders = new TreeSet<Order>();
     
-    public Order (Customer customer, int serialNum){
+    public Order (Customer customer){
         this.customer = customer;
-        this.serialNum = serialNum;
+        this.serialNum = counter++;
     }
     
     public Customer getCustomer() {
@@ -34,38 +34,6 @@ public class Order implements Comparable<Order>{
 
     public static void addOrder(Order order) {
         orders.add(order);
-    }
-    
-    @Override
-    public int compareTo(Order o) {
-       if(serialNum > o.getSerialNum()){
-           return 1;
-       }else if(serialNum < o.getSerialNum()){
-           return -1;
-       } else {return 0;}
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.customer);
-        hash = 53 * hash + this.serialNum;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Order other = (Order) obj;
-        if (this.serialNum != other.serialNum) {
-            return false;
-        }
-        return true;
     }
   
     
