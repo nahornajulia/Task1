@@ -6,6 +6,7 @@
 package com.mycompany.task1;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -43,4 +44,29 @@ public class Category {
         }
         return result;
     } 
+    
+    public Item[] getItems(){
+        List<Item> temprorary = new LinkedList<>();
+          for (Item i : Item.getItems()){
+              if(i.getCategory().getId() == id){
+                  temprorary.add(i);
+              }
+        }
+          Item[] result = new Item[temprorary.size()];
+          for (int u = 0; u < temprorary.size(); u++){
+              result[u] = temprorary.get(u);
+          }
+        return result;
+    }
+    
+    public void addItem(Item it){
+        it.setCategory(this);
+    }
+    
+    public void deleteItem(Item it){
+        if(it.getCategory().id == id) {
+            it.setCategory(null);
+        }
+    }
+    
 }

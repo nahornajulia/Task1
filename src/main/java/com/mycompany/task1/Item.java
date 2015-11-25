@@ -20,7 +20,7 @@ public class Item {
     private Category cat;
     private final int itemId;
     private static int counter;
-    private static List<Item> items = new ArrayList<Item>();
+    private static List<Item> items = new ArrayList<>();
 
     public Item(String itemName, Category cat) {
         this.cat = cat;
@@ -53,14 +53,12 @@ public class Item {
     public static void addItem(Item item) {
         items.add(item);
     }
-public static Item[] getItems(){
+    public static Item[] getItems(){
     Item[] result = new Item[items.size()];
     for (int h = 0; h < items.size();h++){
-       
+       result[h] = items.get(h);
     }
+    return result;
+}
     
-    return null;
-}
-
-
-}
+    }
