@@ -5,22 +5,23 @@
  */
 package com.mycompany.task1;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author julia
  */
 public class Category {
-    private String categoryName;
+    private String categoryName = null;
     private int id;
     private static int counter;
-    private static Set<Category> categories = new TreeSet<Category>();
+    private static List<Category> categories = new ArrayList<>();
     
-    public Category(String categoryName){
-        this.categoryName = categoryName;
+    public Category(String cn){
+        this.categoryName = cn;
         this.id = counter++;
+        categories.add(this);
     }
     
     public String getName(){
@@ -35,4 +36,11 @@ public class Category {
         return id;
     }   
     
+    public static Category[] getCategories(){
+        Category[] result = new Category[categories.size()];
+        for (int k = 0; k < categories.size(); k++){
+           result[k] = categories.get(k);     
+        }
+        return result;
+    } 
 }

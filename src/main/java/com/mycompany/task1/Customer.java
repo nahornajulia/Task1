@@ -29,6 +29,7 @@ public class Customer {
     public String getCustomName() {
         return customName;
     }
+    
     public int getCustomId() {
         return customId;
     }

@@ -5,6 +5,8 @@
  */
 package com.mycompany.task1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -18,13 +20,14 @@ public class Item {
     private Category cat;
     private final int itemId;
     private static int counter;
-    private static Set<Item> items = new TreeSet<Item>();
+    private static List<Item> items = new ArrayList<Item>();
 
     public Item(String itemName, Category cat) {
         this.cat = cat;
         this.itemId = counter++;
         this.itemName = itemName;
-    }
+        addItem(this);      
+    } 
 
     public String getItemName() {
         return itemName;
@@ -50,8 +53,13 @@ public class Item {
     public static void addItem(Item item) {
         items.add(item);
     }
-public static Set<Item> getItems(){
-    return items;
+public static Item[] getItems(){
+    Item[] result = new Item[items.size()];
+    for (int h = 0; h < items.size();h++){
+       
+    }
+    
+    return null;
 }
 
 
