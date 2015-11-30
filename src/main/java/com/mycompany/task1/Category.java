@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.task1;
 
 import java.util.ArrayList;
@@ -18,9 +13,10 @@ public class Category {
     private int id;
     private static int counter;
     private static List<Category> categories = new ArrayList<>();
+//  private List<Item> item = new ArrayList<>();    
     
-    public Category(String cn){
-        this.categoryName = cn;
+    public Category(String catName){
+        this.categoryName = catName;
         this.id = counter++;
         categories.add(this);
     }
@@ -36,37 +32,42 @@ public class Category {
     public int getId(){
         return id;
     }   
+ 
+//dont create array    
+//    public static Category[] getCategories(){
+//        Category[] result = new Category[categories.size()];
+//        for (int k = 0; k < categories.size(); k++){
+//           result[k] = categories.get(k);     
+//        }
+//        return result;
+//    } 
+//    public static Category[] getCategories(){
+//     
+//    }
     
-    public static Category[] getCategories(){
-        Category[] result = new Category[categories.size()];
-        for (int k = 0; k < categories.size(); k++){
-           result[k] = categories.get(k);     
-        }
-        return result;
-    } 
-    
-    public Item[] getItems(){
-        List<Item> temprorary = new LinkedList<>();
-          for (Item i : Item.getItems()){
-              if(i.getCategory().getId() == id){
-                  temprorary.add(i);
-              }
-        }
-          Item[] result = new Item[temprorary.size()];
-          for (int u = 0; u < temprorary.size(); u++){
-              result[u] = temprorary.get(u);
-          }
-        return result;
-    }
+//Do not create temprorary array, just get Items from static List<Item>  field   
+//    public Item[] getItems(){
+//        List<Item> temprorary = new LinkedList<>();
+//          for (Item i : Item.getItems()){
+//              if(i.getCategory().getId() == id){
+//                  temprorary.add(i);
+//              }
+//        }
+//          Item[] result = new Item[temprorary.size()];
+//          for (int u = 0; u < temprorary.size(); u++){
+//              result[u] = temprorary.get(u);
+//          }
+//        return result;
+//    }
     
     public void addItem(Item it){
         it.setCategory(this);
     }
-    
-    public void deleteItem(Item it){
-        if(it.getCategory().id == id) {
-            it.setCategory(null);
-        }
-    }
+//Delete items from the list
+//    public void deleteItem(Item it){
+//        if(it.getCategory().id == id) {
+//            it.setCategory(null);
+//        }
+//    }
     
 }
