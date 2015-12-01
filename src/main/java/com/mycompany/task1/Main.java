@@ -5,48 +5,12 @@
  */
 package com.mycompany.task1;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
  * @author julia
  */
 public class Main {
-
-
-    public List<Order> getOrdersByItem(Item i) {
-        List<Order> result = new LinkedList<Order>();
-        for (ItemOrder myIo : ItemOrder.getItemOrderList()) {
-            if (myIo.getItem().equals(i)) {
-                result.add(myIo.getOrder());
-            }
-        }
-        return result;
-    }
-
-    public List<Item> getItemsByCustomer(Customer c) {
-        List<Item> result = new LinkedList<Item>();
-        for (ItemOrder myIo : ItemOrder.getItemOrderList()) {
-            if (myIo.getOrder().getCustomer().equals(c)) {
-                result.add(myIo.getItem());
-            }
-        }
-        return result;
-
-    }
-
-    public List<Item> getItemsByCategory(Category cat) {
-        List<Item> result = new ArrayList<Item>();
-        for (Item myIo : Item.getItems()) {
-            if (myIo.getCategory().equals(cat)){
-                result.add(myIo);
-            }
-        }
-        return result;
-    }
-
     public static void main(String[] args) {
         Main m = new Main();
 
@@ -61,9 +25,15 @@ public class Main {
         Category category3 = new Category("Furniture");
 
         Item item1 = new Item("brick", category1);
+        System.out.println(item1.getItemId());
         Item item2 = new Item("sofa", category3);
+        System.out.println(item2.getItemId());
         Item item3 = new Item("oven", category2);
+        System.out.println(item3.getItemId());
         Item item4 = new Item("glue", category1);
+        System.out.println(item4.getItemId());
+        item1 = new Item("table", category2);
+        System.out.println(item1.getItemId());
 
         Customer.addCustomer(c2);
         Order.addOrder(order1);
@@ -74,12 +44,14 @@ public class Main {
 
         Order.addOrder(order2);
         Item.addItem(item4);
+        
+        order1.addItem(item4);
+        order1.addItem(item2);
+        
+        order2.addItem(item3);
+        order2.addItem(item1);
 
-        System.out.println("Printing result of the current customer: " + c1.getCustomName());
-        List<Item> itemsByCustomer = m.getItemsByCustomer(c1);
-        for (Item printAll : itemsByCustomer) {
-            System.out.println(printAll.getItemName());
-        }
+        System.out.println("Printing result: " + Order.getListOfItems());
 
     }
 }

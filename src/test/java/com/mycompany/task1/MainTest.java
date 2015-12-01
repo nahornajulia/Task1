@@ -33,7 +33,7 @@ public class MainTest {
     @org.junit.Test
     public void testAddCustomer() {
         System.out.println("addCustomer");
-        Customer c3 = new Customer("Dan", 56);
+        Customer c3 = new Customer("Dan");
         Customer.addCustomer(c3);
     }
 
@@ -43,9 +43,9 @@ public class MainTest {
     @org.junit.Test
     public void testAddOrder() {
         System.out.println("addOrder");
-        Customer c3 = new Customer("Dan", 56);
+        Customer c3 = new Customer("Dan");
         Customer.addCustomer(c3);
-        Order order3 = new Order(c3, 12);
+        Order order3 = new Order(c3);
         Order.addOrder(order3);
     }
 
@@ -55,23 +55,11 @@ public class MainTest {
     @org.junit.Test
     public void testAddItem() {
         System.out.println("addItem");
-        Category category1 = new Category("Building materials", 0);
-        Item item5 = new Item("brash", category1, 0);
+        Category category1 = new Category("Building materials");
+        Item item5 = new Item("brash", category1);
         Item.addItem(item5);
     }
 
-    /**
-     * Test of addItemOrder method, of class Main.
-     */
-    @org.junit.Test
-    public void testAddItemOrder() {
-        System.out.println("addItemOrder");
-        Category category1 = new Category("Building materials", 0);
-        Item item5 = new Item("brash", category1, 0);
-        Customer c3 = new Customer("Dan", 56);
-        Order order3 = new Order(c3, 12);
-        ItemOrder.addItemOrder(item5, order3);
-    }
 //
 //    /**
 //     * Test of getItemsByOrder method, of class Main.

@@ -1,7 +1,6 @@
 package com.mycompany.task1;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ public class Category {
     private int id;
     private static int counter;
     private static List<Category> categories = new ArrayList<>();
-//  private List<Item> item = new ArrayList<>();    
+    private List<Item> item = new ArrayList<>();    
     
     public Category(String catName){
         this.categoryName = catName;
@@ -32,42 +31,28 @@ public class Category {
     public int getId(){
         return id;
     }   
- 
-//dont create array    
-//    public static Category[] getCategories(){
-//        Category[] result = new Category[categories.size()];
-//        for (int k = 0; k < categories.size(); k++){
-//           result[k] = categories.get(k);     
-//        }
-//        return result;
-//    } 
-//    public static Category[] getCategories(){
-//     
-//    }
+   
+    public static List<Category> getCategories(){
+        return categories;
+    } 
+
     
-//Do not create temprorary array, just get Items from static List<Item>  field   
-//    public Item[] getItems(){
-//        List<Item> temprorary = new LinkedList<>();
-//          for (Item i : Item.getItems()){
-//              if(i.getCategory().getId() == id){
-//                  temprorary.add(i);
-//              }
-//        }
-//          Item[] result = new Item[temprorary.size()];
-//          for (int u = 0; u < temprorary.size(); u++){
-//              result[u] = temprorary.get(u);
-//          }
-//        return result;
-//    }
+    @Override
+    public String toString(){
+        return categoryName;
+    }
+    
+     
+    public List<Item> getItems(){
+    return item;
+    }
     
     public void addItem(Item it){
-        it.setCategory(this);
+        item.add(it);
     }
-//Delete items from the list
-//    public void deleteItem(Item it){
-//        if(it.getCategory().id == id) {
-//            it.setCategory(null);
-//        }
-//    }
+
+    public void deleteItem(Item it){
+        item.remove(it);
+    }
     
 }

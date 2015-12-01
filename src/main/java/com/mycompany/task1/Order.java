@@ -5,8 +5,9 @@
  */
 package com.mycompany.task1;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -17,8 +18,10 @@ public class Order {
     private final Customer customer;
     private final int serialNum;    
     private static int counter;
-    private static Set<Order> orders = new TreeSet<Order>();
-    
+    private String itemName;
+    private static List<Order> orders = new LinkedList<>();
+    private static List<Item> item = new ArrayList<>();
+     
     public Order (Customer customer){
         this.customer = customer;
         this.serialNum = counter++;
@@ -36,5 +39,21 @@ public class Order {
         orders.add(order);
     }
   
+    public static List<Item> getListOfItems(){
+        return item;
+    }
     
+    @Override
+    public String toString(){
+        return itemName;
+    }
+    
+    public void addItem(Item i){
+        item.add(i);
+    }
+    
+    public void deleteItem(Item i){
+        item.remove(i);
+    }
 }
+

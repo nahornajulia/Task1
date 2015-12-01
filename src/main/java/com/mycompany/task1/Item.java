@@ -20,52 +20,43 @@ public class Item {
     private static int counter;
     private static List<Item> items = new ArrayList<>();
 
-//Okay
     public Item(String itemName, Category cat) {
         this.cat = cat;
         this.itemId = counter++;
         this.itemName = itemName;
-        addItem(this);      
-    } 
+        addItem(this);
+    }
 
-//Okay
     public String getItemName() {
         return itemName;
     }
 
-//Okay
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
-    
-//Okay
     public Category getCategory() {
         return cat;
     }
-    
-//setCategory -> changeCategory
-//    public void setCategory(Category cat) {
-//        this.cat = cat;
-//    }
 
-//Okay
+    public void changeCategory(Category cat) {
+        this.cat = cat;
+    }
+
     public int getItemId() {
         return itemId;
     }
 
-//Okay
     public static void addItem(Item item) {
         items.add(item);
     }
-    
-//get Item from List directly, dont need to create an array
-//    public static Item[] getItems(){
-//    Item[] result = new Item[items.size()];
-//    for (int h = 0; h < items.size();h++){
-//       result[h] = items.get(h);
-//    }
-//    return result;
-//}
-    
+
+    public static List<Item> getItems() {
+        return items;
     }
+    
+    @Override
+    public String toString(){
+        return itemName;
+    }
+}
