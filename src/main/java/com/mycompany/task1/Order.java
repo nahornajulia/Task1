@@ -17,14 +17,14 @@ public class Order {
     
     private final Customer customer;
     private final int serialNum;    
-    private static int counter;
+    private static int counter = 0;
     private String itemName;
     private static List<Order> orders = new LinkedList<>();
     private static List<Item> item = new ArrayList<>();
      
     public Order (Customer customer){
         this.customer = customer;
-        this.serialNum = counter++;
+        this.serialNum = counter += 1;
     }
     
     public Customer getCustomer() {

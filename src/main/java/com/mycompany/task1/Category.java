@@ -10,13 +10,13 @@ import java.util.List;
 public class Category {
     private String categoryName = null;
     private int id;
-    private static int counter;
+    private static int counter = 0;
     private static List<Category> categories = new ArrayList<>();
     private List<Item> item = new ArrayList<>();    
     
     public Category(String catName){
         this.categoryName = catName;
-        this.id = counter++;
+        this.id = counter+=1;
         categories.add(this);
     }
     
@@ -54,5 +54,8 @@ public class Category {
     public void deleteItem(Item it){
         item.remove(it);
     }
+
+    
+    
     
 }

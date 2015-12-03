@@ -5,12 +5,14 @@
  */
 package com.mycompany.task1;
 
+import java.util.List;
 
 /**
  *
  * @author julia
  */
 public class Main {
+
     public static void main(String[] args) {
         Main m = new Main();
 
@@ -24,16 +26,12 @@ public class Main {
         Category category2 = new Category("Electricity");
         Category category3 = new Category("Furniture");
 
+        
+        
         Item item1 = new Item("brick", category1);
-        System.out.println(item1.getItemId());
         Item item2 = new Item("sofa", category3);
-        System.out.println(item2.getItemId());
         Item item3 = new Item("oven", category2);
-        System.out.println(item3.getItemId());
         Item item4 = new Item("glue", category1);
-        System.out.println(item4.getItemId());
-        item1 = new Item("table", category2);
-        System.out.println(item1.getItemId());
 
         Customer.addCustomer(c2);
         Order.addOrder(order1);
@@ -41,17 +39,21 @@ public class Main {
         Item.addItem(item1);
         Item.addItem(item2);
         Item.addItem(item3);
-
-        Order.addOrder(order2);
         Item.addItem(item4);
         
+        
+        
+        Order.addOrder(order2);
+
         order1.addItem(item4);
         order1.addItem(item2);
-        
+
         order2.addItem(item3);
         order2.addItem(item1);
-
-        System.out.println("Printing result: " + Order.getListOfItems());
+      
+        
+        
+        System.out.println("Printing result: " + ItemsFromCategory);
 
     }
 }

@@ -17,12 +17,12 @@ public class Item {
     private String itemName;
     private Category cat;
     private final int itemId;
-    private static int counter;
+    private static int counter = 0;
     private static List<Item> items = new ArrayList<>();
 
     public Item(String itemName, Category cat) {
         this.cat = cat;
-        this.itemId = counter++;
+        this.itemId = counter += 1;
         this.itemName = itemName;
         addItem(this);
     }

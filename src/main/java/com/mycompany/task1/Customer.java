@@ -17,12 +17,12 @@ public class Customer {
 
     private final String customName;
     private final int customId;
-    private static int counter; 
+    private static int counter = 0; 
     private static List<Customer> customers = new ArrayList<>();
     private static List<Order> order = new LinkedList<>();
     
     public Customer(String customName){
-        this.customId = counter++;
+        this.customId = counter += 1;
         this.customName = customName;
     }
 
