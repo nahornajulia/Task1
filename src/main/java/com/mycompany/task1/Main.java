@@ -5,7 +5,6 @@
  */
 package com.mycompany.task1;
 
-import java.util.List;
 
 /**
  *
@@ -53,7 +52,7 @@ public class Main {
       
         
         
-        System.out.println("Printing result: " + ItemsFromCategory);
+        System.out.println("Printing result: " + Category.getCategories().toString());
 
     }
 }

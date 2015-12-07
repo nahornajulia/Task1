@@ -25,6 +25,9 @@ public class Item {
         this.itemId = counter += 1;
         this.itemName = itemName;
         addItem(this);
+        if (cat != null) {
+            cat.addItem(this);
+        }
     }
 
     public String getItemName() {
@@ -54,9 +57,25 @@ public class Item {
     public static List<Item> getItems() {
         return items;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return itemName;
+    }
+
+    public void deleteItem() {
+        //items.remove(this);
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getItemId() == this.getItemId()) {
+                items.remove(i);
+            }
+        }
+        //cat.getItems().remove(this);
+        for (int e = 0; e < cat.getItems().size(); e++) {
+            if (cat.getItems().get(e).getItemId() == this.getItemId()) {
+                cat.getItems().remove(e);
+            }
+        }
+
     }
 }
